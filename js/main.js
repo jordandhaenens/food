@@ -1,8 +1,8 @@
 "use strict";
 
-function addToLog(taco){
+function dogToDOM(taco){
   console.log("addToLog is running");
-  let outputDiv = document.getElementById("testArea");
+  let outputDiv = document.getElementById("dogArea");
   let cardElements = `<table>`;
   // console.log("taco.dog_brands", taco.dog_brands);
   for (let item in taco){
@@ -33,8 +33,46 @@ function addToLog(taco){
   outputDiv.innerHTML = cardElements;
 }
 
+function catToDOM(taco){
+  console.log("addToLog is running");
+  let outputDiv = document.getElementById("catArea");
+  let cardElements = `<table>`;
+  // console.log("taco.dog_brands", taco.dog_brands);
+  for (let item in taco){
+    let cat_brands = taco[item].cat_brands;
+    for (let item in cat_brands){
+      console.log("cat_brands[item].name", cat_brands[item].name);
+      cardElements += `<tr></tr><tr><th>${cat_brands[item].name}</th></tr>`;
 
-FoodCompiler.dogFoodLoader(addToLog);
+      let breeds = cat_brands[item].breeds;
+      for (let item in breeds){
+        console.log("breeds[item].breed", breeds[item].breed, "item", item);
+        cardElements += `<tr></tr><tr><th>${breeds[item].breed}</th></tr>`;
+      // let types = cat_brands[item].types;
+        let types = breeds[item].types;
+        for (let item in types){
+          console.log("item", item, "types[item].type", types[item].type);
+          cardElements += `<tr><th>${types[item].type}:</th></tr>`;
+
+          let volumes = types[item].volumes;
+          for (let item in volumes){
+            // // console.log("dog_brands[item].name", dog_brands[item].name);
+            // console.log("item", item, "types[item].type", types[item].type);
+            console.log("volumes[item].name", volumes[item].name);
+            console.log("volumes[item].price", volumes[item].price);
+            cardElements += `<tr><td>${volumes[item].name}</td>`;
+            cardElements += `<td>${volumes[item].price}<td></tr>`;
+          }
+        }
+      }
+    }
+    cardElements += `</table>`;
+  }
+  outputDiv.innerHTML = cardElements;
+}
+
+FoodCompiler.catFoodLoader(catToDOM);
+FoodCompiler.dogFoodLoader(dogToDOM);
 
 // let dogFood = [{
 //   "dog_brands": [
