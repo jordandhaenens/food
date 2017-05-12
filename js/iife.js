@@ -12,7 +12,6 @@ var FoodCompiler = (function(){
 			request.addEventListener("error", loadError);
 
 			function loadComplete(event){
-				// console.log("event is ", event);
 				let dogFoods = JSON.parse(event.target.responseText);
 				dogFood.push(dogFoods);
 				console.log("dogFood", dogFood);
@@ -22,10 +21,8 @@ var FoodCompiler = (function(){
 			function loadError(event){
 				console.log("There was an error loading JSON");
 			}
-
 			request.open("GET", "./js/dogFood.json");
 			request.send();
-
 		},
 
 		catFoodLoader: function(callbackToInvoke){
@@ -44,14 +41,10 @@ var FoodCompiler = (function(){
 			function loadError(event){
 				console.log("There was an error loading JSON");
 			}
-
 			request.open("GET", "./js/catFood.json");
 			request.send();
-
 		}
-
-
-
 	};
 
 })();
+
